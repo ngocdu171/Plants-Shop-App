@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
+import './screens/homepage.dart';
 
 void main() {
-  runApp(ShowAlertDialog());
+  runApp(MyApp());
 }
 
-class ShowAlertDialog extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Plants Shop Application')),
-        body: const Center(
-          child: Text(
-            'Hello World!',
-            style: TextStyle(
-              fontSize: 50,
-            ),
-          ),
-        ),
+      title: 'Plants Shop Application',
+      theme: ThemeData(
+        primaryColor: const Color.fromARGB(255, 4, 4, 4),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color.fromARGB(255, 0, 0, 0))
       ),
+      home: const HomePage(),
     );
   }
 }
