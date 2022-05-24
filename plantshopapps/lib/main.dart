@@ -6,13 +6,17 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Plants Shop Application',
       theme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 4, 4, 4),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color.fromARGB(255, 0, 0, 0))
+        primarySwatch: Colors.green,
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: Theme.of(context).textTheme.apply(bodyColor: const Color(0xFF0C9869)),
+        visualDensity: VisualDensity.adaptivePlatformDensity
       ),
       home: const HomePage(),
     );
