@@ -6,12 +6,21 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(24, 26, 125, 82),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 5,
+            color: Color.fromARGB(24, 26, 125, 82)
+          )
+        ]
+      ),
+      height: 220,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: const [
@@ -40,10 +49,10 @@ class Footer extends StatelessWidget {
             children: [
               Column(
                 children: const [
-                  Text('1 1'),
-                  Text('1 2'),
-                  Text('1 3'),
-                  Text('1 4'),
+                  Text('shop_01, Helsinki'),
+                  Text('shop_02, Helsinki'),
+                  Text('shop_03, Kemi'),
+                  Text('shop_04, Oulu'),
                 ],
               ),
               Column(
@@ -61,7 +70,16 @@ class Footer extends StatelessWidget {
               Column(
                 children: [
                   Image.asset("assets/images/logo.jpg", height: 64,),
-                  const Text('1 2'),
+                  Padding(
+                    padding: const EdgeInsets.all(1),
+                    child: Row(
+                      children: [
+                        Image.asset("assets/icons/icons8-facebook-64 (1).png", height: 20,),
+                        Image.asset("assets/icons/icons8-instagram-64.png", height: 20,),
+                        Image.asset("assets/icons/icons8-twitter-64.png", height: 20,),
+                      ],
+                    ),
+                  ),
                   const Text('Copyright 2022 DuPham')
                 ],
               ),
