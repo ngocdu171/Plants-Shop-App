@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.robotoTextTheme(
-          Theme.of(context).textTheme.apply(bodyColor: const Color(0xFF0C9869))
+          Theme.of(context).textTheme.apply(bodyColor: const Color(0xFF000000))
           ),
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
