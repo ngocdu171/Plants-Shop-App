@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/widgets/footer.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
           Text('Mua theo danh muc', style: TextStyle(fontSize: 40),),
           Text('Cay pho bien', style: TextStyle(fontSize: 40),),
           Text('About us', style: TextStyle(fontSize: 40),),
-          Text('Footer', style: TextStyle(fontSize: 40),),
+          Footer(),
         ],
       ),
     );
