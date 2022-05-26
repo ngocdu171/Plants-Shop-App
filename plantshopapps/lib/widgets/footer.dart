@@ -6,6 +6,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       decoration: const BoxDecoration(
         color: Color.fromARGB(24, 26, 125, 82),
         boxShadow: [
@@ -100,7 +101,7 @@ class Footer extends StatelessWidget {
             ],
           )
         ]
-        ),
+      ),
       // child: Row(
       //   mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Center
       //   children: [
