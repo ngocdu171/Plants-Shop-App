@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
@@ -24,7 +22,22 @@ class AboutUs extends StatelessWidget {
               })
             ),
             onPressed: () {},
-            child: const Text('Click here'))
+            child: const Text('Click here')),
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(100),
+                topRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              child: Image.asset(
+                "assets/images/thikim.jpg",
+                width: 300,
+                height: 400,
+                fit: BoxFit.cover,
+              ),
+            )
+          
         ],
       ),
     );
