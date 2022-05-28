@@ -70,7 +70,7 @@ class Footer extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Image.asset("assets/images/logo.jpg", height: 64,),
+                  Image.asset("assets/images/logo.png", height: 64,),
                   Padding(
                     padding: const EdgeInsets.all(1),
                     child: Row(
