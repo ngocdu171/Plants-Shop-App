@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/widgets/aboutus.dart';
 import 'package:plantshopapps/widgets/footer.dart';
+import 'package:plantshopapps/widgets/welcome.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: const <Widget>[
-          Text('Welcome', style: TextStyle(fontSize: 40),),
+          Welcome(),
           Text('Mua theo danh muc', style: TextStyle(fontSize: 40),),
           Text('Cay pho bien', style: TextStyle(fontSize: 40),),
           AboutUs(),
