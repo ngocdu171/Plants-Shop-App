@@ -19,7 +19,6 @@ class HomePage extends StatelessWidget {
           Text('Welcome', style: TextStyle(fontSize: 40),),
           Text('Mua theo danh muc', style: TextStyle(fontSize: 40),),
           Text('Cay pho bien', style: TextStyle(fontSize: 40),),
-          Text('About us', style: TextStyle(fontSize: 40),),
           AboutUs(),
           Footer(),
         ],
