@@ -13,16 +13,17 @@ class AboutUs extends StatelessWidget {
           const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget erat volutpat, malesuada magna et, euismod lectus. Mauris sed elementum ipsum. Fusce non pulvinar tellus, vel egestas massa. Morbi ac facilisis dolor, eget commodo felis. Proin at vestibulum magna. Nunc porta blandit malesuada. Curabitur ac mi venenatis, ultrices orci a, lacinia ex. Vestibulum augue tortor, iaculis ac vulputate vitae, laoreet vitae arcu.'),
           TextButton(
             style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.blue),
-              backgroundColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-                if (states.contains(MaterialState.disabled)) {
-                  return Colors.red;
-                }
-                return null;
-              })
+              // foregroundColor: MaterialStateProperty.all(Colors.white),
+              backgroundColor: MaterialStateProperty.all(Colors.green.shade900)
+              // backgroundColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+              //   if (states.contains(MaterialState.disabled)) {
+              //     return Colors.red;
+              //   }
+              //   return null;
+              // })
             ),
             onPressed: () {},
-            child: const Text('Click here')),
+            child: const Text('Click here',)),
             ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(100),
