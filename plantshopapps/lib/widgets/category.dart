@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/widgets/category_card.dart';
 
 class Category extends StatelessWidget {
   const Category({ Key? key }) : super(key: key);
@@ -8,54 +9,22 @@ class Category extends StatelessWidget {
     return Container(
       height: 500,
       child: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Container(
-              child: Row(
-                children: [
-                  Column(
-                    children: const <Widget>[
-                      Text("Plant outdoor"),
-                      Text("............")
-                    ],
-                  ),
-                  Image.asset("assets/images/peonies_Outdoor.jpg",
-                      width: 100,
-                    ),
-                ],
-              ),
-            ),
+        scrollDirection: Axis.vertical,
+        children: const <Widget>[
+          CategoryCard(
+            200,
+            "Plant outdoor",
+            "assets/images/peonies_Outdoor.jpg"
           ),
-          Container(
-            child: Row(
-              children: [
-                Column(
-                  children: const <Widget>[
-                    Text("Plant indoor"),
-                    Text("............")
-                  ],
-                ),
-                Image.asset("assets/images/Spider Plant.jpg",
-                    width: 100,
-                  ),
-              ],
-            ),
+          CategoryCard(
+            100,
+            "Plant indoor",
+            "assets/images/Spider Plant.jpg"
           ),
-          Container(
-            child: Row(
-              children: [
-                Column(
-                  children: const <Widget>[
-                    Text("Plant office"),
-                    Text("............")
-                  ],
-                ),
-                Image.asset("assets/images/bamboo_Office.jpeg",
-                    width: 100,
-                  ),
-              ],
-            ),
+          CategoryCard(
+            100,
+            "Plant office",
+            "assets/images/bamboo_Office.jpeg"
           ),
         ],
       ),
