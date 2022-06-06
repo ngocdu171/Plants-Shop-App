@@ -4,13 +4,28 @@ class CategoryCard extends StatelessWidget {
   final double heightcon;
   final String plantname;
   final String url;
+  final int a;
+  final int r;
+  final int g;
+  final int b;
 
-  const CategoryCard( this.heightcon,this.plantname, this.url );
+  const CategoryCard(this.a, this.r, this.g, this.b, this.heightcon,this.plantname, this.url );
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          color: Color.fromARGB(a, r, g, b),
+          // color: Color.fromARGB(255, 239, 255, 246),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.blueGrey,
+              blurRadius: 10
+            )
+          ]
+        ),
         height: heightcon,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
