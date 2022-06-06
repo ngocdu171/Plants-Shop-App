@@ -19,20 +19,23 @@ class AboutUs extends StatelessWidget {
           const Text(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget erat volutpat, malesuada magna et, euismod lectus. Mauris sed elementum ipsum. Fusce non pulvinar tellus, vel egestas massa. Morbi ac facilisis dolor, eget commodo felis. Proin at vestibulum magna. Nunc porta blandit malesuada. Curabitur ac mi venenatis, ultrices orci a, lacinia ex. Vestibulum augue tortor, iaculis ac vulputate vitae, laoreet vitae arcu.'),
           SizedBox(
-            width: 130,
+            width: 100,
             child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.green.shade900,
+                  backgroundColor: const Color.fromARGB(255, 9, 47, 16),
                 ),
                 onPressed: () {},
                 child: Row(
                   children: [
-                    const Text(
-                      'Click here',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 255, 255, 255),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 5),
+                      child: Text(
+                        'Start',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
                       ),
                     ),
                     Image.asset(
