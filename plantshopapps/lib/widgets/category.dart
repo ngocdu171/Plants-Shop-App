@@ -7,26 +7,26 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 700,
+      height: 580,
       child: Column(
           children: const <Widget>[
           CategoryCard(
             255, 239, 255, 246,
-            300,
+            200,
             "Plant outdoor",
-            "assets/images/peonies_Outdoor.jpg"
+            "assets/images/peonies_Outdoor.jpg", 200
           ),
           CategoryCard(
             255, 250, 243, 230,
-            100,
+            150,
             "Plant indoor",
-            "assets/images/Spider Plant.jpg"
+            "assets/images/Spider Plant.jpg", 150
           ),
           CategoryCard(
             255, 239, 255, 246,
-            100,
+            150,
             "Plant office",
-            "assets/images/bamboo_Office.jpeg"
+            "assets/images/bamboo_Office.jpeg", 150
           ),
         ],
       ),

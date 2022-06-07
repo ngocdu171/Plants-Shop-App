@@ -8,8 +8,11 @@ class CategoryCard extends StatelessWidget {
   final int r;
   final int g;
   final int b;
+  final double picwidth;
 
-  const CategoryCard(this.a, this.r, this.g, this.b, this.heightcon,this.plantname, this.url );
+  const CategoryCard( this.a, this.r, this.g, this.b,
+    this.heightcon, this.plantname, this.url, this.picwidth
+  );
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,8 +33,10 @@ class CategoryCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(plantname, style: const TextStyle(
                     fontSize: 20
@@ -39,7 +44,7 @@ class CategoryCard extends StatelessWidget {
                   const Text("..........")
                 ],
               ),
-              Image.asset(url, width: 100,)
+              Image.asset(url, width: picwidth,)
             ],
           ),
         ),
