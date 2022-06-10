@@ -26,17 +26,6 @@ class Welcome extends StatelessWidget {
                 TextSpan(text: 'For ', style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 161, 145, 0) )),
                 TextSpan(text: 'FREE', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
               ]
-              // children: [
-              //   TextSpan(text: 'PLANT ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
-              //   TextSpan(text: 'a '),
-              //   TextSpan(text: 'TREE \n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
-              //   TextSpan(text: 'so that \n'),
-              //   TextSpan(text: 'NEXT GENERATION ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
-              //   TextSpan(text: 'Get '),
-              //   TextSpan(text: 'AIR \n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
-              //   TextSpan(text: 'For '),
-              //   TextSpan(text: 'FREE', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45)),
-              // ]
             ),
           ),
           SizedBox(
