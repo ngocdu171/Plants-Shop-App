@@ -6,6 +6,7 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
       child: Column(
         children: [
           Image.asset("assets/images/Ficus Lyrata-Fiddle leaf Fig Plant.jpg"),
