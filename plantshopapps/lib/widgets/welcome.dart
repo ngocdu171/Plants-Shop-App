@@ -8,6 +8,7 @@ class Welcome extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset("assets/images/Ficus Lyrata-Fiddle leaf Fig Plant.jpg"),
           RichText(
@@ -48,6 +49,7 @@ class Welcome extends StatelessWidget {
                             color: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),
+
                       ),
                       Image.asset(
                         "assets/icons/icons8-arrow-64.png",
