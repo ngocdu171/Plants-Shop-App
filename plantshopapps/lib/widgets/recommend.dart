@@ -22,174 +22,61 @@ class Recommend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    // final plants = hotPlants.map((hotplant) {
-    //   final name = hotplant.name.toString();
-    //   final url = hotplant.url.toString();
-
-    //   return
-    //     Text(name,
-    //     style: const TextStyle(fontSize: 20, color: Colors.red),);
-    //     Text(url);
-    // }).toList();
-    final urlplant = hotPlants.map((e) => e.url).toString();
-    final nameplant = hotPlants.map((e) => e.name).toString();
-    final priceplpant = hotPlants.map((e) => e.price).toString();
+    // final urlplant = hotPlants.map((e) => e.url).toString();
+    // final nameplant = hotPlants.map((e) => e.name).toString();
+    // final priceplpant = hotPlants.map((e) => e.price).toString();
 
     return Container(
       padding: const EdgeInsets.all(10),
-      height: 300,
-      child: GridView.builder(
-        itemCount: hotPlants.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount:3,
-          crossAxisSpacing: 4,
-          mainAxisSpacing: 4
+      height: 400,
+      child: Column(
+        children: <Widget>[
+
+          GridView.builder(
+          itemCount: hotPlants.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount:3,
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              width: 200,
+              height: 500,
+              child: Column(
+                children: [
+                  Image.asset(hotPlants[index].url, width: 90, height: 70,),
+                  Text(hotPlants[index].name),
+                  Text(hotPlants[index].price),
+                ],
+              ),
+            );
+          },
         ),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            width: 200,
-            height: 500,
-            child: Column(
-              children: [
-                Image.asset(hotPlants[index].url, width: 90, height: 70,),
-                Text(hotPlants[index].name),
-                Text(hotPlants[index].price)
-              ],
-            ),
-          );
-        },
+
+          SizedBox(
+                    width: 100,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 9, 47, 16),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        'Start',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                    ) 
+                  ),
+        ],
         
-          // children: [
-          //   // Image.asset(url)
-          //   // const Text("asjdhgasdgasd"),
-          //   // SizedBox(height: 4,),
-          //   Image.asset(urlplant, width: 5,),
-          //   Text(nameplant),
-          //   Text(priceplpant)
-          // ],
+
       ),
+
     );
-
-    // return Container(
-    //   child: Column(
-    //     children: <Widget>[
-    //       Row(
-    //         children: [
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/Trifasciata Futura Superba.jpg", width: 70,),
-    //                   const Text("Plant 01"),
-    //                   const Text("10 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/queen-annes-lace_Outdoor.jpg", width: 70,),
-    //                   const Text("Plant 02"),
-    //                   const Text("20 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/Spider-Cactus_Office.jpg", width: 70,),
-    //                   const Text("Plant 03"),
-    //                   const Text("30 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-
-    //       Row(
-    //         children: [
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/Trifasciata Futura Superba.jpg", width: 70,),
-    //                   const Text("Plant 01"),
-    //                   const Text("10 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/queen-annes-lace_Outdoor.jpg", width: 70,),
-    //                   const Text("Plant 02"),
-    //                   const Text("20 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-
-    //           Padding(
-    //             padding: const EdgeInsets.all(5),
-    //             child: Container(
-    //               child: Column(
-    //                 children: <Widget>[
-    //                   Image.asset("assets/images/Spider-Cactus_Office.jpg", width: 70,),
-    //                   const Text("Plant 03"),
-    //                   const Text("30 euro")
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //       SizedBox(
-    //         width: 150,
-    //         child: TextButton(
-    //             style: TextButton.styleFrom(
-    //               backgroundColor: const Color.fromARGB(255, 9, 47, 16),
-    //             ),
-    //             onPressed: () {},
-    //             child: Row(
-    //               children: [
-    //                 const Padding(
-    //                   padding: EdgeInsets.only(right: 5),
-    //                   child: Text(
-    //                     'Load more',
-    //                     style: TextStyle(
-    //                       fontWeight: FontWeight.bold,
-    //                       fontSize: 20,
-    //                       color: Color.fromARGB(255, 255, 255, 255),
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 Image.asset(
-    //                   "assets/icons/icons8-arrow-64.png",
-    //                   width: 25,
-    //                   color: Colors.white,
-    //                 )
-    //               ],
-    //             )),
-    //       ),
-    //     ],
-    //   ),
-    // );
 
   }
 }
