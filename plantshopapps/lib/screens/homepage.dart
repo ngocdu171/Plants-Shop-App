@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
           children: [
             CustomAppBar(),
             Welcome(),
+            Category(),
             AboutUs(),
             Footer()
           ],
