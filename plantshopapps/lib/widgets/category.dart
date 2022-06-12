@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:plantshopapps/widgets/category_card.dart';
 
 class Category extends StatelessWidget {
-  const Category({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 580,
+      height: 700,
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+        left: 25,
+        right: 25
+      ),
       child: Column(
           children: const <Widget>[
           CategoryCard(
