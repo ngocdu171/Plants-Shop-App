@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
-  const AboutUs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(10),
+      height: 700,
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+        left: 25,
+        right: 25
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
             "assets/icons/quotation-mark.png",
             width: 40,
             height: 40,
           ),
-          const Text('About us'),
+          const Text('About us', style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold
+            ),),
           const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget erat volutpat, malesuada magna et, euismod lectus. Mauris sed elementum ipsum. Fusce non pulvinar tellus, vel egestas massa. Morbi ac facilisis dolor, eget commodo felis. Proin at vestibulum magna. Nunc porta blandit malesuada. Curabitur ac mi venenatis, ultrices orci a, lacinia ex. Vestibulum augue tortor, iaculis ac vulputate vitae, laoreet vitae arcu.'),
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget erat volutpat, malesuada magna et, euismod lectus. Mauris sed elementum ipsum. Fusce non pulvinar tellus, vel egestas massa.'
+          ),
           SizedBox(
             width: 100,
             child: TextButton(
@@ -46,19 +54,39 @@ class AboutUs extends StatelessWidget {
                   ],
                 )),
           ),
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(100),
-              topRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-            child: Image.asset(
-              "assets/images/thikim.jpg",
-              width: 300,
-              height: 400,
-              fit: BoxFit.cover,
-            ),
+          Stack(
+            children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 110),
+                  child: Container(
+                    width: 260,
+                    height: 360,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 226, 255, 242),
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40,
+                bottom: 10
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(100),
+                    topRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  child: Image.asset(
+                    "assets/images/thikim.jpg",
+                    width: 330,
+                    height: 430,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
           )
         ],
       ),

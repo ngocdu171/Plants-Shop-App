@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plantshopapps/screens/body.dart';
 import 'package:plantshopapps/widgets/aboutus.dart';
 import 'package:plantshopapps/widgets/app_bar.dart';
 import 'package:plantshopapps/widgets/category.dart';
@@ -17,9 +16,10 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             CustomAppBar(),
             Welcome(),
+            AboutUs(),
             Footer()
           ],
         ),
