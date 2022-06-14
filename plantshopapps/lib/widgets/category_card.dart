@@ -15,38 +15,37 @@ class CategoryCard extends StatelessWidget {
   );
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-          color: Color.fromARGB(a, r, g, b),
-          // color: Color.fromARGB(255, 239, 255, 246),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.blueGrey,
-              blurRadius: 10
-            )
-          ]
-        ),
-        height: heightcon,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(plantname, style: const TextStyle(
-                    fontSize: 20
-                  ),),
-                  const Text("..........")
-                ],
-              ),
-              Image.asset(url, width: picwidth,)
-            ],
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        color: Color.fromARGB(a, r, g, b),
+        // color: Color.fromARGB(255, 239, 255, 246),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.blueGrey,
+            blurRadius: 10
+          )
+        ]
+      ),
+      height: heightcon,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(plantname, style: const TextStyle(
+                  fontSize: 20
+                ),),
+                const Text("..........")
+              ],
+            ),
+            Image.asset(url, width: picwidth,)
+          ],
         ),
       ),
     );
