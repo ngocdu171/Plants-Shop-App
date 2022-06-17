@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             CustomAppBar(),
             Welcome(),
             Category(),
-            // Recommend(),
+            Recommend(),
             AboutUs(),
             Footer()
           ],
