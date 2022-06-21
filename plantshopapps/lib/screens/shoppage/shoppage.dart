@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/screens/homepage.dart';
+import 'package:plantshopapps/screens/shoppage/widget/filterwidget.dart';
+import 'package:plantshopapps/widgets/app_bar.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({ Key? key }) : super(key: key);
@@ -11,6 +13,7 @@ class ShopPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              CustomAppBar(),
               const Text("Shop page"),
               TextButton(
                 onPressed: (() {
@@ -21,7 +24,8 @@ class ShopPage extends StatelessWidget {
                   }
                 ),
                 child: const Text("Back to homePage"),
-              )
+              ),
+              FilterWidget()
             ],
           ),
         ),
