@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/screens/shoppage.dart';
 
 class Welcome extends StatelessWidget {
   // const Welcome({ Key? key }) : super(key: key);
@@ -35,7 +36,12 @@ class Welcome extends StatelessWidget {
                 style: TextButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 9, 47, 16),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ShopPage())
+                  );
+                },
                   child: Row(
                     children: [
                       const Padding(
