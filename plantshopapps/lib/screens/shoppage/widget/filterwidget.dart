@@ -5,21 +5,27 @@ class SaleList {
   final String url;
   final String name;
   final String price;
+  final bool sale;
 
   const SaleList ({
     required this.url,
     required this.name,
-    required this.price
+    required this.price,
+    required this.sale
   });
 }
 
 List<SaleList> saleList = [
-  const SaleList(url: "assets/images/Aloe Vera.png", name: "Aloe Vera", price: "10"),
-  const SaleList(url: "assets/images/bamboo_Office.png", name: "Bamboo", price: "10"),
-  const SaleList(url: "assets/images/Fern Plant.png", name: "Fern", price: "20"),
-  const SaleList(url: "assets/images/Ficus Lyrata-Fiddle leaf Fig Plant.png", name: "Ficus Lyrata", price: "30"),
-  const SaleList(url: "assets/images/Golden-Devil-ivy_Office.png", name: "Golden-Devil-ivy", price: "30"),
-  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade", price: "10"),
+  const SaleList(url: "assets/images/Aloe Vera.png", name: "Aloe Vera", price: "10", sale: true),
+  const SaleList(url: "assets/images/bamboo_Office.png", name: "Bamboo", price: "10", sale: true),
+  const SaleList(url: "assets/images/Fern Plant.png", name: "Fern", price: "20", sale: true),
+  const SaleList(url: "assets/images/Ficus Lyrata-Fiddle leaf Fig Plant.png", name: "Ficus Lyrata", price: "30", sale: true),
+  const SaleList(url: "assets/images/Golden-Devil-ivy_Office.png", name: "Golden-Devil-ivy", price: "30", sale: true),
+  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade", price: "10", sale: true),
+  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade", price: "10", sale: false),
+  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade1", price: "10", sale: false),
+  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade2", price: "10", sale: false),
+  const SaleList(url: "assets/images/Jade-Plant.png", name: "Jade3", price: "10", sale: true),
 ];
 
 
@@ -95,10 +101,16 @@ class FilterWidget extends StatelessWidget {
           ),
 
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Sale"),
-              Wrap(
-                children: [],
+              const Text("Sale", style: TextStyle(
+            fontSize: 25, fontWeight: FontWeight.bold
+          ),),
+              Column(
+                // children: saleList.map((e) => Text(e.name, style: const TextStyle(fontSize: 20),)).toList(),
+                // children: saleList.map((e) => (e.sale == false) ? Text(e.name): const Text("ko giam gia")).toList(),
+
+                children: saleList.map((e) => (e.sale == true) ? Text(e.name): const Text("ko giam gia")).toList(),
               )
             ],
           )
