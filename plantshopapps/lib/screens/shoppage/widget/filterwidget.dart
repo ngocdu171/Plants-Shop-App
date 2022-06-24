@@ -30,9 +30,10 @@ List<SaleList> saleList = [
 
 
 class FilterWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
+    final testList = saleList.where((element) => element.sale == true);
+
     return Container(
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top,
@@ -81,7 +82,7 @@ class FilterWidget extends StatelessWidget {
               children: [
                 Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  child: Image.asset(e.url, width: 100, height: 100,)
+                  child: Image.asset(e.url, width: 90, height: 90,)
                 ),
                 Text(e.name),
                 Text(e.price + " €")
@@ -110,7 +111,9 @@ class FilterWidget extends StatelessWidget {
                 // children: saleList.map((e) => Text(e.name, style: const TextStyle(fontSize: 20),)).toList(),
                 // children: saleList.map((e) => (e.sale == false) ? Text(e.name): const Text("ko giam gia")).toList(),
 
-                children: saleList.map((e) => (e.sale == true) ? Text(e.name): const Text("ko giam gia")).toList(),
+                // children: saleList.map((e) => (e.sale == true) ? Text(e.name): const Text("ko giam gia")).toList(),
+
+                children: testList.map((e) => Text(e.name)).toList(),
               )
             ],
           )
