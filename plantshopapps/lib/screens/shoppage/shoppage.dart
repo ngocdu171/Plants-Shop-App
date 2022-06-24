@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/shoppage/widget/filterwidget.dart';
+import 'package:plantshopapps/screens/shoppage/widget/salewidget.dart';
 import 'package:plantshopapps/widgets/app_bar.dart';
+import 'package:plantshopapps/widgets/footer.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({ Key? key }) : super(key: key);
@@ -25,7 +27,10 @@ class ShopPage extends StatelessWidget {
                 ),
                 child: const Text("Back to homePage"),
               ),
-              FilterWidget()
+              FilterWidget(),
+              const SaleWidget(),
+              
+              Footer()
             ],
           ),
         ),
