@@ -33,6 +33,7 @@ class FilterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final testList = saleList.where((element) => element.sale == true);
+    final discountList = plantsList.where((element) => element.discount == true);
 
     return Container(
       padding: EdgeInsets.only(
@@ -89,34 +90,60 @@ class FilterWidget extends StatelessWidget {
               ],
             )).toList(),
           ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 9, 47, 16)
+          Center(
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 9, 47, 16)
+              ),
+              child: const Text("More", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),)
             ),
-            child: const Text("More", style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),)
           ),
 
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Sale", style: TextStyle(
+          const Text("Sale", style: TextStyle(
             fontSize: 25, fontWeight: FontWeight.bold
           ),),
-              Column(
-                // children: saleList.map((e) => Text(e.name, style: const TextStyle(fontSize: 20),)).toList(),
-                // children: saleList.map((e) => (e.sale == false) ? Text(e.name): const Text("ko giam gia")).toList(),
 
-                // children: saleList.map((e) => (e.sale == true) ? Text(e.name): const Text("ko giam gia")).toList(),
+          Wrap(
+            alignment: WrapAlignment.start,
+            spacing: 15,
+            runSpacing: 20,
+            // children: saleList.map((e) => Text(e.name, style: const TextStyle(fontSize: 20),)).toList(),
+            // children: saleList.map((e) => (e.sale == false) ? Text(e.name): const Text("ko giam gia")).toList(),
 
-                children: testList.map((e) => Text(e.name)).toList(),
-              )
-            ],
-          )
+            // children: saleList.map((e) => (e.sale == true) ? Text(e.name): const Text("ko giam gia")).toList(),
+
+            // children: testList.map((e) => Text(e.name)).toList(),
+            children: discountList.map((e) => Column(
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  child: Image.asset(e.url, width: 90, height: 90,),
+                ),
+                Text(e.name),
+                Text(e.price + " €")
+              ],
+            )).toList(),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 9, 47, 16)
+              ),
+              child: const Text("More", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),)
+            ),
+          ),
+          
+          
         ],
       ),
     );
