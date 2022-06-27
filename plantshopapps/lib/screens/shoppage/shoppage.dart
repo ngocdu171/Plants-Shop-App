@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/data/plants.dart';
 import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/shoppage/widget/filterwidget.dart';
 import 'package:plantshopapps/screens/shoppage/widget/salewidget.dart';
@@ -10,6 +11,8 @@ class ShopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final test = plantsList.where((element) => element.discount == true);
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -28,7 +31,7 @@ class ShopPage extends StatelessWidget {
                 child: const Text("Back to homePage"),
               ),
               FilterWidget(),
-              const SaleWidget(),
+              SaleWidget(testList : test),
               
               Footer()
             ],
