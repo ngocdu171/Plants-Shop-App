@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:plantshopapps/data/plants.dart';
+// import 'package:plantshopapps/data/plants.dart';
 
 class SaleWidget extends StatelessWidget {
   
-  const SaleWidget({ Key? key, required Iterable<PlantsList> testList }) : super(key: key);
-
-
+  // final test;
+  const SaleWidget({ Key? key, required this.data, }) : super(key: key);
+  
+  final String data;
   @override
   Widget build(BuildContext context) {
     return 
-      const Text("this is sale widget 1");
+    Text(data);
+      // const Text("this is sale widget 2");
+      // Text('${widget.tam}');
       // Wrap(
-      //   children: test('', () {
-          
-      //   });,
-      // )
+      //   children: test.map((e) => Text(e.name))
+      // );
   }
 }
