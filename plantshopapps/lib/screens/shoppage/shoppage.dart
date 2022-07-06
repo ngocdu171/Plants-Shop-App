@@ -12,7 +12,7 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final test = plantsList.where((element) => element.discount == true);
-    
+    const data = "123456";
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -31,7 +31,7 @@ class ShopPage extends StatelessWidget {
                 child: const Text("Back to homePage"),
               ),
               FilterWidget(),
-              SaleWidget(testList : test),
+              const SaleWidget(data: data),
               
               Footer()
             ],
