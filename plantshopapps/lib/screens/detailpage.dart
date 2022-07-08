@@ -151,14 +151,14 @@ class DetailPage extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    color: const Color.fromARGB(255, 181, 68, 68),
-                    height: 500,
-                    width: MediaQuery.of(context).size.width,
+                    // color: const Color.fromARGB(255, 255, 255, 255),
+                    // height: MediaQuery.of(context).size.height,
+                    // color: const Color.fromARGB(255, 133, 133, 133),
+                    height: 300,
                     child: Stack(
                       children: <Widget>[
                           Positioned(
-                            // left: 30,
-                            right: 10,
+                            right: 0,
                             child: Container(
                               width: 300,
                               height: 300,
@@ -173,15 +173,15 @@ class DetailPage extends StatelessWidget {
                           ),
 
                         Positioned(
-                          left: 10,
-                          bottom: 50,
+                          left: 0,
+                          top: 90,
                           child: Container(
-                            width: 100,
-                            height: 100,
+                            width: 150,
+                            height: 150,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
-                                image: AssetImage("assets/images/peonies_Outdoor.jpg"),
+                                image: AssetImage("assets/images/Spider-Cactus_Office.jpg"),
                                 fit: BoxFit.cover
                               )
                             ),
@@ -189,7 +189,7 @@ class DetailPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
