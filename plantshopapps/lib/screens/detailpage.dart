@@ -28,12 +28,18 @@ class DetailPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                  Text(title, style: const TextStyle(fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 38, 84, 60)),
+                  ),
                   Center(child: Image.asset(url, width: 200, height: 200,)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(title),
+                      Text(title, style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 38, 84, 60)
+                      ),),
                       const Text("Store: 99"),
                       
                     ],
@@ -44,12 +50,19 @@ class DetailPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Size"),
+                      const Text("Size", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15, color: Color.fromARGB(255, 38, 84, 60)
+                      ),),
                       Row(
-                        children: const [
-                          Text("0.5 m"),
-                          Text("1.2 m"),
-                          Text("1.4 m"),
+                        children: [
+                          OutlinedButton(onPressed: () {}, child: const Text("0.5 m"),
+                          style: OutlinedButton.styleFrom(
+                            primary: const Color.fromARGB(255, 38, 84, 60),
+                            side: const BorderSide(width: 1, color: Color.fromARGB(255, 38, 84, 60))
+                          )),
+                          OutlinedButton(onPressed: () {}, child: const Text("1.2 m"),),
+                          OutlinedButton(onPressed: () {}, child: const Text("1.4 m"),)
                         ],
                       )
                     ],
@@ -57,7 +70,10 @@ class DetailPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Quantity"),
+                      const Text("Quantity", style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15, color: Color.fromARGB(255, 38, 84, 60)
+                      ),),
                       Row(
                         children: const [
                           Icon(Icons.remove_circle_outline),
@@ -72,7 +88,10 @@ class DetailPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(price + " €"),
+                      Text(price + " €", style: const TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 36, 186, 108)
+                      ),),
                       SizedBox(
                         width: 100,
                         child: TextButton(
@@ -151,9 +170,6 @@ class DetailPage extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    // color: const Color.fromARGB(255, 255, 255, 255),
-                    // height: MediaQuery.of(context).size.height,
-                    // color: const Color.fromARGB(255, 133, 133, 133),
                     height: 300,
                     child: Stack(
                       children: <Widget>[
