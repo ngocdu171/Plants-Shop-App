@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plantshopapps/screens/loginpage.dart';
 import './screens/homepage.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         //   ),
         // visualDensity: VisualDensity.adaptivePlatformDensity
       ),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }
