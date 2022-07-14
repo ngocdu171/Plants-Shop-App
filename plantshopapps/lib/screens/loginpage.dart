@@ -156,13 +156,15 @@ class _LoginPageState extends State<LoginPage> {
 
   // login function
   void signIn(String email, String password) async {
-    if(_formKey.currentState!.validate())
-    {
+    if(_formKey.currentState!.validate()) {
       await _auth.signInWithEmailAndPassword(email: email, password: password)
       .then((uid) => {
         Fluttertoast.showToast(msg: "Login Successful"),
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()))
-      }).catchError((e) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomePage())
+        )
+      })
+      .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });
     }
