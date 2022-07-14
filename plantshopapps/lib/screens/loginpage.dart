@@ -8,8 +8,8 @@ class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key }) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
-  // State<LoginPage> createState() => _LoginPageState();
+  // _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
         if (!regex.hasMatch(value))
         // if (!RegExp(r'^.{6,}$').hasMatch(value))
         {
-          return ("Please enter a valid Password (length must be greater than 5)");
+          return ("Please enter a valid Password \n (length must be greater than 5)");
         }
         return null;
       },
