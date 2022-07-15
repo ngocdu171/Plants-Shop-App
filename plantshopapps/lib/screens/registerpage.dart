@@ -1,6 +1,8 @@
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -17,11 +19,14 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   //editing controller
-  final firstNameEditingController = new TextEditingController();
-  final secondNameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
+  final firstNameEditingController = TextEditingController();
+  final lastNameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
+
+  //firebase
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +35,16 @@ class _RegisterPageState extends State<RegisterPage> {
       autofocus: false,
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
-      // validator: (value) {
-      //   RegExp regex = new RegExp(r'^.{3,}$');
-      //   if (value!.isEmpty) {
-      //     return ("First Name cannot be Empty");
-      //   }
-      //   if (!regex.hasMatch(value)) {
-      //     return ("Enter Valid name(Min. 3 Character)");
-      //   }
-      //   return null;
-      // },
+      validator: (value) {
+        RegExp regex = RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("Please enter your first name");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please enter valid name(Min. 3 Character)");
+        }
+        return null;
+      },
       onSaved: (value) {
         firstNameEditingController.text = value!;
       },
@@ -53,25 +58,25 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       )
     );
-    //second name field
-    final secondNameField = TextFormField(
+    //last name field
+    final lastNameField = TextFormField(
         autofocus: false,
-        controller: secondNameEditingController,
+        controller: lastNameEditingController,
         keyboardType: TextInputType.name,
-        // validator: (value) {
-        //   if (value!.isEmpty) {
-        //     return ("Second Name cannot be Empty");
-        //   }
-        //   return null;
-        // },
+        validator: (value) {
+          if (value!.isEmpty) {
+            return ("Please enter your last name");
+          }
+          return null;
+        },
         onSaved: (value) {
-          secondNameEditingController.text = value!;
+          lastNameEditingController.text = value!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.account_circle),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Second Name",
+          hintText: "Last Name",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -82,17 +87,16 @@ class _RegisterPageState extends State<RegisterPage> {
         autofocus: false,
         controller: emailEditingController,
         keyboardType: TextInputType.emailAddress,
-        // validator: (value) {
-        //   if (value!.isEmpty) {
-        //     return ("Please Enter Your Email");
-        //   }
-        //   // reg expression for email validation
-        //   if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-        //       .hasMatch(value)) {
-        //     return ("Please Enter a valid email");
-        //   }
-        //   return null;
-        // },
+        validator: (value) {
+          if (value!.isEmpty) {
+            return ("Please enter your email");
+          }
+          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+              .hasMatch(value)) {
+            return ("Please enter a valid email");
+          }
+          return null;
+        },
         onSaved: (value) {
           firstNameEditingController.text = value!;
         },
@@ -111,15 +115,16 @@ class _RegisterPageState extends State<RegisterPage> {
         autofocus: false,
         controller: passwordEditingController,
         obscureText: true,
-        // validator: (value) {
-        //   RegExp regex = RegExp(r'^.{6,}$');
-        //   if (value!.isEmpty) {
-        //     return ("Password is required for login");
-        //   }
-        //   if (!regex.hasMatch(value)) {
-        //     return ("Enter Valid Password(Min. 6 Character)");
-        //   }
-        // },
+        validator: (value) {
+          RegExp regex = RegExp(r'^.{6,}$');
+          if (value!.isEmpty) {
+            return ("Please enter your password");
+          }
+          if (!regex.hasMatch(value)) {
+            return ("Please enter valid password(Min. 6 Character)");
+          }
+          return null;
+        },
         onSaved: (value) {
           firstNameEditingController.text = value!;
         },
@@ -138,13 +143,13 @@ class _RegisterPageState extends State<RegisterPage> {
         autofocus: false,
         controller: confirmPasswordEditingController,
         obscureText: true,
-        // validator: (value) {
-        //   if (confirmPasswordEditingController.text !=
-        //       passwordEditingController.text) {
-        //     return "Password don't match";
-        //   }
-        //   return null;
-        // },
+        validator: (value) {
+          if (confirmPasswordEditingController.text !=
+              passwordEditingController.text) {
+            return "Password doesn't match";
+          }
+          return null;
+        },
         onSaved: (value) {
           confirmPasswordEditingController.text = value!;
         },
@@ -167,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
-            // signUp(emailEditingController.text, passwordEditingController.text);
+            register(emailEditingController.text, passwordEditingController.text);
           },
           child: const Text(
             "Register",
@@ -194,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 45),
                   firstNameField,
                   const SizedBox(height: 20),
-                  secondNameField,
+                  lastNameField,
                   const SizedBox(height: 20),
                   emailField,
                   const SizedBox(height: 20),
@@ -227,5 +232,12 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  //function register
+  void register( String email, String password) async {
+    if(_formKey.currentState!.validate()) {
+      
+    }
   }
 }
