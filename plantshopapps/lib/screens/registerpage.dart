@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/screens/loginpage.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -177,17 +178,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.red),
-          onPressed: () {
-            // passing this to our root
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -197,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: 200,
+                    height: 180,
                     child: Image.asset("assets/images/logo.png",
                     fit: BoxFit.contain,)
                   ),
@@ -220,7 +210,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       const Text("Have already an account?"),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                         },
                         child: const Text("Login Here",
                         style: TextStyle(
