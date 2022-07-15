@@ -161,7 +161,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final registerButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: const Color.fromARGB(255, 9, 47, 16),
       child: MaterialButton(
           padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -169,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
             // signUp(emailEditingController.text, passwordEditingController.text);
           },
           child: const Text(
-            "SignUp",
+            "Register",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
@@ -191,6 +191,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
+            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
             child: Form(
               key: _formKey,
               child: Column(
@@ -213,6 +214,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
                   registerButton,
                   const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text("Have already an account?"),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
+                        },
+                        child: const Text("Login Here",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15
+                        ),),
+                      )
+                    ],
+                  ),
                 ],
               )
             ),
