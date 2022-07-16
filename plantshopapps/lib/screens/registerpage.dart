@@ -1,8 +1,11 @@
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:plantshopapps/model/user_model.dart';
+import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -237,7 +240,33 @@ class _RegisterPageState extends State<RegisterPage> {
   //function register
   void register( String email, String password) async {
     if(_formKey.currentState!.validate()) {
-      
+      await _auth.createUserWithEmailAndPassword(email: email, password: password)
+      .then((value) => {postDetailsToFirebase()})
+      .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
     }
+  }
+
+  postDetailsToFirebase() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+    UserModel userModel = UserModel();
+    userModel.email = user!.email;
+    userModel.uid = user.uid;
+    userModel.firstName = firstNameEditingController.text;
+    userModel.lastName = lastNameEditingController.text;
+
+    await firebaseFirestore
+    .collection("users")
+    .doc(user.uid)
+    .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Registration successfully!");
+
+    Navigator.pushAndRemoveUntil(context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+      (route) => false
+    );
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
 // import './screens/homepage.dart';
 
-// Future<void> main() async {
-void main() async {
+Future<void> main() async {
+// void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
