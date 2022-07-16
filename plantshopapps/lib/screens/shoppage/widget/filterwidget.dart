@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/data/plants.dart';
+import 'package:plantshopapps/screens/detailpage.dart';
 
 class SaleList {
   final String url;
@@ -30,11 +31,12 @@ List<SaleList> saleList = [
 
 
 class FilterWidget extends StatelessWidget {
+  // late final PlantsList plantsList;
   @override
   Widget build(BuildContext context) {
     final testList = saleList.where((element) => element.sale == true);
     final discountList = plantsList.where((element) => element.discount == true);
-
+    
     return Container(
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top,
@@ -79,15 +81,25 @@ class FilterWidget extends StatelessWidget {
             alignment: WrapAlignment.start,
             spacing: 15,
             runSpacing: 20,
-            children: plantsList.map((e) => Column(
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  child: Image.asset(e.url, width: 90, height: 90,)
-                ),
-                Text(e.name),
-                Text(e.price + " €")
-              ],
+            children: plantsList.map((e) => GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(id: e.id,
+                      title: e.name, url: e.url, price: e.price)
+                  )
+                );
+              },
+              child: Column(
+                children: [
+                  Card(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    child: Image.asset(e.url, width: 90, height: 90,)
+                  ),
+                  Text(e.name),
+                  Text(e.price + " €")
+                ],
+              ),
             )).toList(),
           ),
           Center(

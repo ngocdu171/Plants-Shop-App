@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plantshopapps/screens/shoppage.dart';
+import 'package:plantshopapps/screens/shoppage/shoppage.dart';
 
 class Welcome extends StatelessWidget {
   // const Welcome({ Key? key }) : super(key: key);
