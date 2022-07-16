@@ -12,8 +12,8 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
-  // State<RegisterPage> createState() => _RegisterPageState();
+  // _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -30,6 +30,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //firebase
   final _auth = FirebaseAuth.instance;
+
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
       borderRadius: BorderRadius.circular(30),
       color: const Color.fromARGB(255, 9, 47, 16),
       child: MaterialButton(
-          padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          // padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             register(emailEditingController.text, passwordEditingController.text);
@@ -181,7 +183,8 @@ class _RegisterPageState extends State<RegisterPage> {
             "Register",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 20, color: Color.fromARGB(255, 255, 255, 255),
+                fontWeight: FontWeight.bold, letterSpacing: 2),
           )),
     );
 
@@ -215,7 +218,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text("Have already an account?"),
+                      const Text("Have already an account? ", style: TextStyle(
+                        fontSize: 20
+                      ),),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
@@ -223,11 +228,14 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text("Login Here",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic,
+                          color: Color.fromARGB(255, 36, 186, 108)
                         ),),
                       )
                     ],
                   ),
+                  const SizedBox(height: 15),
                 ],
               )
             ),
