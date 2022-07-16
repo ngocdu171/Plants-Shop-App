@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import './screens/homepage.dart';
 
 void main() {
@@ -6,13 +7,23 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Plants Shop Application',
       theme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 4, 4, 4),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color.fromARGB(255, 0, 0, 0))
+        backgroundColor: const Color(0xFFFAFAFA),
+        primaryColor: const Color(0xFFFFBD00),
+        // ignore: deprecated_member_use
+        accentColor: const Color(0xFFFFEBC7)
+        // primarySwatch: Colors.blue,
+        // scaffoldBackgroundColor: Colors.white,
+        // textTheme: GoogleFonts.robotoTextTheme(
+        //   Theme.of(context).textTheme.apply(bodyColor: const Color(0xFF000000))
+        //   ),
+        // visualDensity: VisualDensity.adaptivePlatformDensity
       ),
       home: const HomePage(),
     );
