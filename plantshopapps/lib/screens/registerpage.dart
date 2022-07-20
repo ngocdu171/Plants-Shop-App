@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:plantshopapps/model/user_model.dart';
 import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
+import 'package:plantshopapps/screens/navigationView.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -273,7 +274,7 @@ class _RegisterPageState extends State<RegisterPage> {
     Fluttertoast.showToast(msg: "Registration successfully!");
 
     Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(builder: (context) => const HomePage()),
+      MaterialPageRoute(builder: (context) => const MainScreen()),
       (route) => false
     );
   }
