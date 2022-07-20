@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
 
 Future<void> main() async {
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
         // ignore: deprecated_member_use
         accentColor: const Color(0xFFFFEBC7),
       ),
-      home: const LoginPage(),
+      home: const HomePage(),
+      // home: const LoginPage(),
     );
   }
 }
