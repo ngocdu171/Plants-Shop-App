@@ -45,9 +45,26 @@ class _HomePageState extends State<HomePage> {
                   //Collection data ready to show
                   if(snapshot.connectionState == ConnectionState.done) {
                     return ListView(
-                      children: snapshot.data!.docs.map((document) {
-                        return Container(
-                          child: Text(document['name']),
+                      children: snapshot.data!.docs.map((product) {
+                        return GestureDetector(
+                          onTap: () {
+                            // Navigator.push(context, MaterialPageRoute(
+                            //   builder: (context) => DetailPage(title: title, id: id, url: url, price: price)
+                            // ));
+                          },
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Text(product['name']),
+                                Card(
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                  child: Image.network(product['image'][0], width: 90, height: 90,)
+                                ),
+                                Text(product['name']),
+                                Text(product['price'].toString())
+                              ],
+                            ),
+                          ),
                         );
                       }).toList(),
                     );
