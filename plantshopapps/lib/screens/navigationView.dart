@@ -21,6 +21,12 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        unselectedItemColor: const Color.fromARGB(255, 195, 195, 195),
+        selectedItemColor: const Color.fromARGB(255, 32, 117, 73),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         onTap: onTabTapped,
         items: const [
           BottomNavigationBarItem(
