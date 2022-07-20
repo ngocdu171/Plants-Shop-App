@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:plantshopapps/screens/homepage.dart';
+// import 'package:plantshopapps/screens/homepage.dart';
+import 'package:plantshopapps/screens/navigationView.dart';
 import 'package:plantshopapps/screens/registerpage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -163,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
         .then((uid) => {
           Fluttertoast.showToast(msg: "Login Successful"),
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomePage())
+            MaterialPageRoute(builder: (context) => const MainScreen())
           )
         });
       } on FirebaseAuthException catch (e) {
