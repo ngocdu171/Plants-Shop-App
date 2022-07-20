@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         // ignore: deprecated_member_use
         accentColor: const Color(0xFFFFEBC7),
       ),
-      home: const HomePage(),
-      // home: const LoginPage(),
+      // home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }

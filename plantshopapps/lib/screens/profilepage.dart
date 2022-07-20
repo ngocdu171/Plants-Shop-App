@@ -1,23 +1,42 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:plantshopapps/model/user_model.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  // State<ProfilePage> createState() => _ProfilePageState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUSer = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+      .collection("users")
+      .doc(user!.uid)
+      .get()
+      .then((value) {
+        loggedInUSer = UserModel.fromMap(value.data());
+        setState(() {});
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top,
-        left: 25,
-        right: 25
-      ),
-      child: Column(
-        children: <Widget>[
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: <Widget>[
               SizedBox(
                 height: 150,
                 child: Image.asset("assets/images/logo.png", fit: BoxFit.contain),
@@ -29,12 +48,27 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(
                 height: 10,
               ),
-              
+              Text("${loggedInUSer.firstName}",
+                style: const TextStyle(color: Colors.black,
+                  fontWeight: FontWeight.w500
+                ),
+              ),
+              Text("${loggedInUSer.email}"),
               const SizedBox(
                 height: 15,
               ),
+              // ActionChip(label: const Text("Logout"),
+              //   onPressed: () {
+                  
+              //   },
+              // ),
             ],
+          ),
+        ),
       ),
     );
+
+    
+
   }
 }
