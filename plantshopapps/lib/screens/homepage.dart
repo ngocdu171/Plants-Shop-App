@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/screens/detailpage.dart';
 // import 'package:plantshopapps/widgets/aboutus.dart';
@@ -16,85 +19,129 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //firestore
+  final CollectionReference _productsRef =
+    FirebaseFirestore.instance.collection("products");
+
   @override
   Widget build(BuildContext context) {
     final test = plantsList.where((element) => element.discount == true);
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
-            left: 25,
-            right: 25
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+  return Scaffold(
+      body: Container(
+          child: Stack(
             children: [
-              // const Text("Shop", style: TextStyle(
-              //   fontSize: 25, fontWeight: FontWeight.bold
-              // ),),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Text("New Arrival", style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                      ),),
-                      Container(
-                        child: Image.asset("assets/icons/icons8-expand-arrow-64.png", width: 20,),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text("Price", style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                      ),),
-                      Container(
-                        child: Image.asset("assets/icons/icons8-expand-arrow-64.png", width: 20,),
-                      )
-                    ],
-                  ),
-                ]
-              ),
-
-              Wrap(
-                alignment: WrapAlignment.start,
-                spacing: 15,
-                runSpacing: 20,
-                children: plantsList.map((e) => GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(id: e.id,
-                          title: e.name, url: e.url, price: e.price)
-                      )
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                        child: Image.asset(e.url, width: 90, height: 90,)
+              FutureBuilder<QuerySnapshot>(
+                future: _productsRef.get(),
+                builder: (context, snapshot) {
+                  if(snapshot.hasError) {
+                    return Scaffold(
+                      body: Center(
+                        child: Text("Error: ${snapshot.error}"),
                       ),
-                      Text(e.name),
-                      Text(e.price + " €")
-                    ],
-                  ),
-                )).toList(),
-              ),
-              
+                    );
+                  }
+
+                  //Collection data ready to show
+                  if(snapshot.connectionState == ConnectionState.done) {
+                    return ListView(
+                      children: snapshot.data!.docs.map((document) {
+                        return Container(
+                          child: Text(document['name']),
+                        );
+                      }).toList(),
+                    );
+                  }
+
+                  //Loading State
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                },
+              )
             ],
           ),
-        )
-      ),
+        ),
     );
-
   }
+
+  //   return Scaffold(
+  //     body: SingleChildScrollView(
+  //       child: Container(
+  //         padding: EdgeInsets.only(
+  //           top: MediaQuery.of(context).padding.top,
+  //           left: 25,
+  //           right: 25
+  //         ),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             // const Text("Shop", style: TextStyle(
+  //             //   fontSize: 25, fontWeight: FontWeight.bold
+  //             // ),),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 Row(
+  //                   children: [
+  //                     const Text("New Arrival", style: TextStyle(
+  //                       fontSize: 20,
+  //                       fontWeight: FontWeight.bold
+  //                     ),),
+  //                     Container(
+  //                       child: Image.asset("assets/icons/icons8-expand-arrow-64.png", width: 20,),
+  //                     )
+  //                   ],
+  //                 ),
+  //                 Row(
+  //                   children: [
+  //                     const Text("Price", style: TextStyle(
+  //                       fontSize: 20,
+  //                       fontWeight: FontWeight.bold
+  //                     ),),
+  //                     Container(
+  //                       child: Image.asset("assets/icons/icons8-expand-arrow-64.png", width: 20,),
+  //                     )
+  //                   ],
+  //                 ),
+  //               ]
+  //             ),
+
+  //             Wrap(
+  //               alignment: WrapAlignment.start,
+  //               spacing: 15,
+  //               runSpacing: 20,
+  //               children: plantsList.map((e) => GestureDetector(
+  //                 onTap: () {
+  //                   Navigator.of(context).push(
+  //                     MaterialPageRoute(
+  //                       builder: (context) => DetailPage(id: e.id,
+  //                         title: e.name, url: e.url, price: e.price)
+  //                     )
+  //                   );
+  //                 },
+  //                 child: Column(
+  //                   children: [
+  //                     Card(
+  //                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+  //                       child: Image.asset(e.url, width: 90, height: 90,)
+  //                     ),
+  //                     Text(e.name),
+  //                     Text(e.price + " €")
+  //                   ],
+  //                 ),
+  //               )).toList(),
+  //             ),
+              
+  //           ],
+  //         ),
+  //       )
+  //     ),
+  //   );
+
+  // }
 }
 
 // class HomePage extends StatelessWidget {
