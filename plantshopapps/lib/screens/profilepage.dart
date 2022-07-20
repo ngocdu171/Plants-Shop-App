@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/model/user_model.dart';
+import 'package:plantshopapps/screens/loginpage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -57,18 +58,21 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(
                 height: 15,
               ),
-              // ActionChip(label: const Text("Logout"),
-              //   onPressed: () {
-                  
-              //   },
-              // ),
+              ActionChip(label: const Text("Logout"),
+                onPressed: () {
+                  logout(context);
+                },
+              ),
             ],
           ),
         ),
       ),
     );
-
-    
-
+  }
+  void logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const LoginPage())
+    );
   }
 }
