@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // import 'package:plantshopapps/data/plants.dart';
 // import 'package:plantshopapps/widgets/app_bar.dart';
@@ -14,18 +15,33 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  final CollectionReference _productsRef =
+    FirebaseFirestore.instance.collection("products");
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Stack(
         children: [
-          ListView(
-            children: [
-              const Text("data"),
-              const Text("data"),
-              Text(widget.productId)
-            ],
-          )
+          FutureBuilder(
+            future: _productsRef.doc(widget.productId).get(),
+            builder: (context, snapshot) {
+              if(snapshot.hasError) {
+                return Scaffold(
+                  body: Center(
+                    child: Text("Error: ${snapshot.error}"),
+                  ),
+                );
+              }
+
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
