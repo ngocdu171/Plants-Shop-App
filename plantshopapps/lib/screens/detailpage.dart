@@ -45,21 +45,47 @@ class _DetailPageState extends State<DetailPage> {
                 //   ],
                 // );
                 List imageList = product['image'];
+                List sizeList = product['size'];
 
                 return Column(
                   children: [
                     Container(
-                      height: 400,
-                      child: PageView(
+                      height: 500,
+                      child: Stack(
                         children: [
-                          for(var i=0; i < imageList.length; i++)
-                            Container(
-                              child: Image.network(product['image'][i], width: 90, height: 90,)
-                            )
+                          PageView(
+                            children: [
+                              for(var i=0; i < imageList.length; i++)
+                                Container(
+                                  child: Image.network(product['image'][i], width: 90, height: 90,)
+                                )
+                            ]
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 0,
+                            right: 0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                for(var i=0; i < imageList.length; i++)
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 5
+                                    ),
+                                    width: 12,
+                                    height: 12,
+                                    color: Colors.black,
+                                  )
+                              ],
+                            ),
+                          )
                         ]
                       ),
                     ),
                     Text(product['name']),
+                    Text(product['description']),
+                    Text(product['size'].toString()),
                     Text(product['price'].toString())
                   ],
                 );
