@@ -24,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       body: Stack(
         children: [
-          FutureBuilder(
+          FutureBuilder<dynamic>(
             future: _productsRef.doc(widget.productId).get(),
             builder: (context, snapshot) {
               if(snapshot.hasError) {
@@ -35,6 +35,25 @@ class _DetailPageState extends State<DetailPage> {
                 );
               }
 
+              if(snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> product = snapshot.data?.data();
+                // return ListView(
+                //   children: [
+                //     Image.network(product['image'][0]),
+                //     Text(product['name']),
+                //     Text(product['price'].toString())
+                //   ],
+                // );
+                return Column(
+                  children: [
+                    Image.network(product['image'][0], width: 90, height: 90,),
+                    Text(product['name']),
+                    Text(product['price'].toString())
+                  ],
+                );
+              }
+
+              // loading State
               return const Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),
