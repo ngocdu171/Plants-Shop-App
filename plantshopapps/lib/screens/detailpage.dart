@@ -44,9 +44,21 @@ class _DetailPageState extends State<DetailPage> {
                 //     Text(product['price'].toString())
                 //   ],
                 // );
+                List imageList = product['image'];
+
                 return Column(
                   children: [
-                    Image.network(product['image'][0], width: 90, height: 90,),
+                    Container(
+                      height: 400,
+                      child: PageView(
+                        children: [
+                          for(var i=0; i < imageList.length; i++)
+                            Container(
+                              child: Image.network(product['image'][i], width: 90, height: 90,)
+                            )
+                        ]
+                      ),
+                    ),
                     Text(product['name']),
                     Text(product['price'].toString())
                   ],
