@@ -21,12 +21,14 @@ class _DetailPageState extends State<DetailPage> {
 
   final User? _user = FirebaseAuth.instance.currentUser;
 
+  String selectedProductSize = "0";
+
   Future addToCart() {
     return _usersRef
         .doc(_user?.uid)
         .collection("Cart")
         .doc(widget.productId)
-        .set({"size": 1});
+        .set({"size": selectedProductSize});
   }
 
   @override
@@ -91,7 +93,12 @@ class _DetailPageState extends State<DetailPage> {
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
-                    ProductSize(sizeList: sizeList),
+                    ProductSize(
+                      sizeList: sizeList,
+                      selectedSize: (size) {
+                        selectedProductSize = size;
+                      },
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: Row(
