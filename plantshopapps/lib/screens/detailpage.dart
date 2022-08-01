@@ -52,6 +52,9 @@ class _DetailPageState extends State<DetailPage> {
                 List imageList = product['image'];
                 List sizeList = product['size'];
 
+                //set an initial size
+                selectedProductSize = sizeList[0];
+
                 return ListView(
                   padding: const EdgeInsets.all(0),
                   children: [
