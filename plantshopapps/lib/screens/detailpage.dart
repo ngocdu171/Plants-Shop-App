@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/widgets/image_swipe.dart';
+import 'package:plantshopapps/widgets/product_size.dart';
 
 class DetailPage extends StatefulWidget {
   final String productId;
@@ -81,6 +82,42 @@ class _DetailPageState extends State<DetailPage> {
                         fontSize: 16
                       ),),
                     ),
+                    ProductSize(sizeList: sizeList),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 65,
+                            height: 65,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 203, 203, 203),
+                              borderRadius: BorderRadius.circular(12)
+                            ),
+                            alignment: Alignment.center,
+                            child: Image.asset("assets/icons/icons8-like-64.png", height: 40,),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 65,
+                              margin: const EdgeInsets.only(
+                                left: 16
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(12)
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text("Add to Cart", style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              ),),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 );
               }
