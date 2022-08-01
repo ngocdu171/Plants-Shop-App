@@ -13,6 +13,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     const HomePage(),
+    const Text("cart page"),
     const ProfilePage()
   ];
 
@@ -32,6 +33,10 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
