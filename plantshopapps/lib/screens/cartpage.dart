@@ -91,9 +91,9 @@ class _CartPageState extends State<CartPage> {
                                               padding: const EdgeInsets.symmetric(
                                                 vertical: 4
                                               ),
-                                              child: Text(_productMap['price'].toString(),
+                                              child: Text(_productMap['price'].toString() + ' €',
                                                 style: const TextStyle(
-                                                  fontSize: 16, color: Colors.amberAccent,
+                                                  fontSize: 16, color: Color.fromARGB(255, 36, 186, 108),
                                                   fontWeight: FontWeight.w600
                                                 ),
                                               ),
