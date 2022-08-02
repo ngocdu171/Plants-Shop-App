@@ -11,8 +11,8 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  // final CollectionReference _productsRef =
-  //   FirebaseFirestore.instance.collection("products");
+  final CollectionReference _productsRef =
+    FirebaseFirestore.instance.collection("products");
   final CollectionReference _usersRef =
       FirebaseFirestore.instance.collection("users");
 
@@ -44,19 +44,61 @@ class _CartPageState extends State<CartPage> {
                               builder: (context) => DetailPage(productId: product.id)
                             ));
                           },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12)
-                            ),
-                            height: 350,
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 12,
-                              horizontal: 24
-                            ),
-                            child: Container(
-                              child: Text(product.id),
-                            ),
-                          ),
+                          child: FutureBuilder<dynamic>(
+                            future: _productsRef.doc(product.id).get(),
+                            builder: (context, productSnap) {
+                              if(productSnap.hasError) {
+                                return Container(
+                                  child: Center(
+                                    child: Text("${productSnap.error}"),
+                                  ),
+                                );
+                              }
+
+                              if(productSnap.connectionState == ConnectionState.done) {
+                                Map _productMap = productSnap.data?.data();
+
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                    horizontal: 24
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 90,
+                                        height: 90,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(8),
+                                          child: Image.network(
+                                            _productMap['image'][0],
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 16
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Text(_productMap['name']),
+                                            Text(_productMap['price'].toString())
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                );
+                              }
+
+                              return Container(
+                                child: const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              );
+
+                            }
+                          )
                         );
                       }).toList(),
                     );
