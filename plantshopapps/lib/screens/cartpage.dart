@@ -80,9 +80,29 @@ class _CartPageState extends State<CartPage> {
                                           left: 16
                                         ),
                                         child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(_productMap['name']),
-                                            Text(_productMap['price'].toString())
+                                            Text(_productMap['name'],
+                                            style: const TextStyle(
+                                              fontSize: 18, color: Colors.black,
+                                              fontWeight: FontWeight.w600
+                                            ),),
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(
+                                                vertical: 4
+                                              ),
+                                              child: Text(_productMap['price'].toString(),
+                                                style: const TextStyle(
+                                                  fontSize: 16, color: Colors.amberAccent,
+                                                  fontWeight: FontWeight.w600
+                                                ),
+                                              ),
+                                            ),
+                                            Text('Size - ' + product['size'].toString(),
+                                            style: const TextStyle(
+                                              fontSize: 16, color: Colors.black,
+                                              fontWeight: FontWeight.w600
+                                            ))
                                           ],
                                         ),
                                       )
