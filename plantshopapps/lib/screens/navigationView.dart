@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantshopapps/screens/cartpage.dart';
 import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/profilepage.dart';
 
@@ -13,7 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     const HomePage(),
-    const Text("cart page"),
+    const CartPage(),
     const ProfilePage()
   ];
 
