@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantshopapps/model/user_model.dart';
 import 'package:plantshopapps/screens/loginpage.dart';
@@ -68,6 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
   void logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
