@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plantshopapps/screens/cartpage.dart';
 import 'package:plantshopapps/screens/homepage.dart';
 import 'package:plantshopapps/screens/profilepage.dart';
+import 'package:plantshopapps/screens/savepage.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _children = [
     const HomePage(),
     const CartPage(),
+    SavePage(),
     const ProfilePage()
   ];
 
@@ -38,6 +40,10 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.save),
+            label: 'Save'
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
