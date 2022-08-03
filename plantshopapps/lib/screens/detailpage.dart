@@ -31,6 +31,9 @@ class _DetailPageState extends State<DetailPage> {
         .set({"size": selectedProductSize});
   }
 
+  // final SnackBar _snackBar = const SnackBar(content: Text("Product added to cart"));
+  final _snackBar = "Product added to cart";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +87,10 @@ class _DetailPageState extends State<DetailPage> {
                           vertical: 8, horizontal: 24),
                       child: Text(
                         product['description'],
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16,
+                          // overflow: TextOverflow.ellipsis // show ...
+                          overflow: TextOverflow.fade
+                        ),
                       ),
                     ),
                     const Padding(
@@ -106,22 +112,54 @@ class _DetailPageState extends State<DetailPage> {
                       padding: const EdgeInsets.all(24),
                       child: Row(
                         children: [
-                          Container(
-                            width: 65,
-                            height: 65,
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 203, 203, 203),
-                                borderRadius: BorderRadius.circular(12)),
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              "assets/icons/icons8-like-64.png",
-                              height: 40,
+                          GestureDetector(
+                            onTap: () async {
+                              await addToCart();
+                            },
+                            child: Container(
+                              width: 65,
+                              height: 65,
+                              decoration: BoxDecoration(
+                                  color: const Color.fromARGB(255, 203, 203, 203),
+                                  borderRadius: BorderRadius.circular(12)),
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                "assets/icons/icons8-save-64.png",
+                                height: 40,
+                              ),
                             ),
                           ),
                           Expanded(
                             child: GestureDetector(
                               onTap: () async {
-                                addToCart();
+                                await addToCart();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.transparent,
+                                    // backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                    behavior: SnackBarBehavior.floating,
+                                    elevation: 3,
+                                    content: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      height: 80,
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromARGB(255, 81, 146, 83),
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.check_circle,
+                                            color: Colors.white,
+                                            size: 40,
+                                          ),
+                                          const SizedBox(width: 20,),
+                                          Text(_snackBar.toString())
+                                        ],
+                                      ),
+                                    )
+                                  )
+                                );
                               },
                               child: Container(
                                 height: 65,
